@@ -6,6 +6,8 @@ import lombok.ToString;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 
+import java.util.Arrays;
+
 @ToString
 @Getter
 @AllArgsConstructor
@@ -15,7 +17,7 @@ import lombok.EqualsAndHashCode;
 //the fields of this class
 public class Course {
     public static int nextId = 1;
-    private static final int MAX_STUDENT_NUMBER = 5;
+    public static final int MAX_STUDENT_NUMBER = 5;
 
 
     private double credit;
@@ -27,7 +29,7 @@ public class Course {
     private Teacher teacher;
 
     //the method that receives the requested info
-    public Course(String courseId, String courseName, Department department, double credit) {
+    public Course(String courseName, Department department, double credit) {
         this.courseId = String.format("C%03d", nextId++);
 
         this.credit = credit;
@@ -38,10 +40,21 @@ public class Course {
         this.studentNum = 0;
     }
 
+    //Methofd that registers a student to the course(support method)
+    public void registerStudent(Student student) {
+        if (studentNum < MAX_STUDENT_NUMBER) {
+            students[studentNum] = student;
+            studentNum++;
+        } else {
+            System.out.println("Cannot register more students. Maximum number of students reached for course " + getCourseName());
+        }
+    }
+
     //toString method that adjust the string format
     @Override
     public String toString() {
-        return "Course{ Teacher = " + teacher + ", course name = " + courseName + ", students = " + students + ", credit = " +
-                 credit + ", student number = " + studentNum + ", department = " + department + ", course ID = " + courseId + " , max student num = " + MAX_STUDENT_NUMBER + "}";
+        return "Course{ Teacher = " + teacher + ", course name = " + courseName + ", students = " + Arrays.toString(students) + ", credit = " +
+                credit + ", student number = " + studentNum + ", department = " + department + ", course ID = " + courseId + " , max student num = " + MAX_STUDENT_NUMBER + "}";
     }
+
 }

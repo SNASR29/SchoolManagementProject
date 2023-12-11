@@ -11,7 +11,6 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +45,6 @@ public class SchoolManagementSystem {
         this.teacherCount = 0;
         this.studentCount = 0;
     }
-
 
     /**
      * Search a department in the departments based on a departmentId. If the departmentId
@@ -158,7 +156,6 @@ public class SchoolManagementSystem {
         }
     }
 
-
     /**
      * Display all students in a school, only display the student that is not null. And only display
      * the names of courses and department if there is any.
@@ -203,7 +200,6 @@ public class SchoolManagementSystem {
         return null;
     }
 
-
     /**
      * Add a new course
      * @param courseName
@@ -220,7 +216,6 @@ public class SchoolManagementSystem {
         }
 
     }
-
 
     /**
      *Register a course for a student, based on studentId and courseId, which will check
@@ -268,7 +263,6 @@ public class SchoolManagementSystem {
             System.out.println("Student or course not found with the specified IDs.");
         }
     }
-
 
     /**
      * This method adds a new teacher to the school
